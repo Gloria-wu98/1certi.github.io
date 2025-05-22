@@ -1,374 +1,240 @@
-{\rtf1\ansi\ansicpg950\cocoartf2822
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;\f1\fnil\fcharset136 PingFangTC-Regular;\f2\fnil\fcharset0 AppleColorEmoji;
-}
-{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red255\green255\blue255;\red71\green138\blue206;
-\red141\green213\blue254;\red203\green203\blue202;\red109\green109\blue109;\red194\green125\blue100;\red109\green115\blue120;
-\red212\green212\blue212;\red112\green192\blue130;\red167\green197\blue151;\red184\green113\blue248;\red245\green123\blue47;
-}
-{\*\expandedcolortbl;;\cssrgb\c0\c1\c1;\cssrgb\c100000\c100000\c100000\c0;\cssrgb\c34146\c61677\c84338;
-\cssrgb\c61545\c86704\c99884;\cssrgb\c83320\c83320\c83112;\cssrgb\c50307\c50306\c50181;\cssrgb\c80772\c56796\c46790;\cssrgb\c50336\c52696\c54531;
-\cssrgb\c86465\c86464\c86248;\cssrgb\c50437\c78684\c58115;\cssrgb\c71035\c80830\c65726;\cssrgb\c77746\c54642\c98035;\cssrgb\c97756\c56070\c23668;
-}
-\paperw11900\paperh16840\margl1440\margr1440\vieww12720\viewh7240\viewkind0
-\deftab720
-\pard\pardeftab720\partightenfactor0
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>研習參與證書 - Certificate of Participation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Inter:wght@400;700;800&family=Mochiy+Pop+One&display=swap" rel="stylesheet">
+    <style>
+        /* 設定預設字體 */
+        body {
+            font-family: 'Noto Sans TC', 'Inter', sans-serif;
+        }
+        /* Mochiy Pop One 字體 */
+        .font-mochiy {
+            font-family: 'Mochiy Pop One', sans-serif;
+        }
+        /* 證書背景漸變色 */
+        .certificate-container-bg {
+            background: linear-gradient(135deg, #e0f2fe, #c3dafe); /* 淺藍色到靛藍色的漸變 */
+        }
+        /* 預覽區域樣式 */
+        .preview-area {
+            border: 2px dashed #cbd5e1;
+            padding: 1rem;
+            margin-top: 1.5rem;
+            border-radius: 0.75rem;
+            background-color: #f8fafc;
+        }
+        /* 按鈕樣式 */
+        .action-button {
+            transition: all 0.3s ease;
+        }
+        .action-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+        .action-button:active {
+            transform: translateY(0px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        /* 輸入框樣式 */
+        .name-input {
+            border-color: #93c5fd; /* 淺藍色邊框 */
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .name-input:focus {
+            border-color: #3b82f6; /* 深藍色邊框 */
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+            outline: none;
+        }
+        /* 證書內容區塊 */
+        .certificate-content {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        /* 列印按鈕樣式 */
+        .print-button {
+            position: absolute;
+            bottom: 1rem; /* 調整與底部的距離 */
+            right: 1rem;  /* 調整與右側的距離 */
+            padding: 0.5rem 1rem;
+            background-color: #4f46e5; /* 深紫色背景 (indigo-600) */
+            color: white;
+            border-radius: 0.5rem; /* 圓角 */
+            font-size: 0.875rem; /* 文字大小 */
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .print-button:hover {
+            background-color: #4338ca; /* 滑鼠懸停時更深的紫色 (indigo-700) */
+        }
+        /* 列印時隱藏此按鈕 */
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            /* 確保輸入區域和預覽提示在列印時也隱藏 */
+            .input-section, .preview-header {
+                display: none !important;
+            }
+            /* 移除證書預覽的邊框和背景 */
+            .preview-area {
+                border: none !important;
+                padding: 0 !important;
+                margin-top: 0 !important;
+                background-color: transparent !important;
+            }
+            /* 讓證書內容填滿頁面 */
+            body.printing {
+                padding: 0 !important;
+                margin: 0 !important;
+                background: white !important; /* 列印時背景為白色 */
 
-\f0\fs28 \cf2 \cb3 \expnd0\expndtw0\kerning0
-<!DOCTYPE html>\
-\pard\pardeftab720\partightenfactor0
-\cf2 <html lang="zh-Hant">\
-<head>\
-    <meta charset="UTF-8">\
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">\
-    <title>
-\f1 \'ac\'e3\'b2\'df\'b0\'d1\'bb\'50\'c3\'d2\'ae\'d1
-\f0  - Certificate of Participation</title>\
-    <script src="https://cdn.tailwindcss.com"></script>\
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Inter:wght@400;700;800&family=Mochiy+Pop+One&display=swap" rel="stylesheet">\
-    <style>\
-        /* 
-\f1 \'b3\'5d\'a9\'77\'b9\'77\'b3\'5d\'a6\'72\'c5\'e9
-\f0  */\
-        body \{\
-            font-family: 'Noto Sans TC', 'Inter', sans-serif;\
-        \}\
-        /* Mochiy Pop One 
-\f1 \'a6\'72\'c5\'e9
-\f0  */\
-        .font-mochiy \{\
-            font-family: 'Mochiy Pop One', sans-serif;\
-        \}\
-        /* 
-\f1 \'c3\'d2\'ae\'d1\'ad\'49\'b4\'ba\'ba\'a5\'c5\'dc\'a6\'e2
-\f0  */\
-        .certificate-container-bg \{\
-            background: linear-gradient(135deg, #e0f2fe, #c3dafe); /* 
-\f1 \'b2\'4c\'c2\'c5\'a6\'e2\'a8\'ec\'c0\'51\'c2\'c5\'a6\'e2\'aa\'ba\'ba\'a5\'c5\'dc
-\f0  */\
-        \}\
-        /* 
-\f1 \'b9\'77\'c4\'fd\'b0\'cf\'b0\'ec\'bc\'cb\'a6\'a1
-\f0  */\
-        .preview-area \{\
-            border: 2px dashed #cbd5e1;\
-            padding: 1rem;\
-            margin-top: 1.5rem;\
-            border-radius: 0.75rem;\
-            background-color: #f8fafc;\
-        \}\
-        /* 
-\f1 \'ab\'f6\'b6\'73\'bc\'cb\'a6\'a1
-\f0  */\
-        .action-button \{\
-            transition: all 0.3s ease;\
-        \}\
-        .action-button:hover \{\
-            transform: translateY(-2px);\
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);\
-        \}\
-        .action-button:active \{\
-            transform: translateY(0px);\
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);\
-        \}\
-        /* 
-\f1 \'bf\'e9\'a4\'4a\'ae\'d8\'bc\'cb\'a6\'a1
-\f0  */\
-        .name-input \{\
-            border-color: #93c5fd; /* 
-\f1 \'b2\'4c\'c2\'c5\'a6\'e2\'c3\'e4\'ae\'d8
-\f0  */\
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;\
-        \}\
-        .name-input:focus \{\
-            border-color: #3b82f6; /* 
-\f1 \'b2\'60\'c2\'c5\'a6\'e2\'c3\'e4\'ae\'d8
-\f0  */\
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);\
-            outline: none;\
-        \}\
-        /* 
-\f1 \'c3\'d2\'ae\'d1\'a4\'ba\'ae\'65\'b0\'cf\'b6\'f4
-\f0  */\
-        .certificate-content \{\
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);\
-        \}\
-        /* 
-\f1 \'a6\'43\'a6\'4c\'ab\'f6\'b6\'73\'bc\'cb\'a6\'a1
-\f0  */\
-        .print-button \{\
-            position: absolute;\
-            bottom: 1rem; /* 
-\f1 \'bd\'d5\'be\'e3\'bb\'50\'a9\'b3\'b3\'a1\'aa\'ba\'b6\'5a\'c2\'f7
-\f0  */\
-            right: 1rem;  /* 
-\f1 \'bd\'d5\'be\'e3\'bb\'50\'a5\'6b\'b0\'bc\'aa\'ba\'b6\'5a\'c2\'f7
-\f0  */\
-            padding: 0.5rem 1rem;\
-            background-color: #4f46e5; /* 
-\f1 \'b2\'60\'b5\'b5\'a6\'e2\'ad\'49\'b4\'ba
-\f0  (indigo-600) */\
-            color: white;\
-            border-radius: 0.5rem; /* 
-\f1 \'b6\'ea\'a8\'a4
-\f0  */\
-            font-size: 0.875rem; /* 
-\f1 \'a4\'e5\'a6\'72\'a4\'6a\'a4\'70
-\f0  */\
-            cursor: pointer;\
-            transition: background-color 0.3s ease;\
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);\
-        \}\
-        .print-button:hover \{\
-            background-color: #4338ca; /* 
-\f1 \'b7\'c6\'b9\'ab\'c4\'61\'b0\'b1\'ae\'c9\'a7\'f3\'b2\'60\'aa\'ba\'b5\'b5\'a6\'e2
-\f0  (indigo-700) */\
-        \}\
-        /* 
-\f1 \'a6\'43\'a6\'4c\'ae\'c9\'c1\'f4\'c2\'c3\'a6\'b9\'ab\'f6\'b6\'73
-\f0  */\
-        @media print \{\
-            .no-print \{\
-                display: none !important;\
-            \}\
-            /* 
-\f1 \'bd\'54\'ab\'4f\'bf\'e9\'a4\'4a\'b0\'cf\'b0\'ec\'a9\'4d\'b9\'77\'c4\'fd\'b4\'a3\'a5\'dc\'a6\'62\'a6\'43\'a6\'4c\'ae\'c9\'a4\'5d\'c1\'f4\'c2\'c3
-\f0  */\
-            .input-section, .preview-header \{\
-                display: none !important;\
-            \}\
-            /* 
-\f1 \'b2\'be\'b0\'a3\'c3\'d2\'ae\'d1\'b9\'77\'c4\'fd\'aa\'ba\'c3\'e4\'ae\'d8\'a9\'4d\'ad\'49\'b4\'ba
-\f0  */\
-            .preview-area \{\
-                border: none !important;\
-                padding: 0 !important;\
-                margin-top: 0 !important;\
-                background-color: transparent !important;\
-            \}\
-            /* 
-\f1 \'c5\'fd\'c3\'d2\'ae\'d1\'a4\'ba\'ae\'65\'b6\'f1\'ba\'a1\'ad\'b6\'ad\'b1
-\f0  */\
-            body.printing \{\
-                padding: 0 !important;\
-                margin: 0 !important;\
-                background: white !important; /* 
-\f1 \'a6\'43\'a6\'4c\'ae\'c9\'ad\'49\'b4\'ba\'ac\'b0\'a5\'d5\'a6\'e2
-\f0  */\
-\
-            \}\
-            .certificate-content \{\
-                width: 100% !important;\
-                height: 100vh !important; /* 
-\f1 \'b9\'c1\'b8\'d5\'c5\'fd\'a8\'e4\'b6\'f1\'ba\'a1\'a6\'43\'a6\'4c\'ad\'b6\'ad\'b1\'b0\'aa\'ab\'d7
-\f0  */\
-                max-width: none !important;\
-                box-shadow: none !important;\
-                border-radius: 0 !important;\
-                margin: 0 auto !important; /* 
-\f1 \'a4\'f4\'a5\'ad\'b8\'6d\'a4\'a4
-\f0  */\
-            \}\
-        \}\
-    </style>\
-</head>\
-<body class="certificate-container-bg min-h-screen flex flex-col items-center justify-center p-4 selection:bg-yellow-300 selection:text-yellow-800">\
-\
-    <div class="input-section mb-8 p-6 bg-white rounded-xl shadow-lg w-full max-w-md no-print">\
-        <h2 class="text-2xl font-bold text-center text-blue-700 mb-6">
-\f1 \'bf\'e9\'a4\'4a\'b1\'7a\'aa\'ba\'a9\'6d\'a6\'57
-\f0 </h2>\
-        <div class="space-y-4">\
-            <div>\
-                <label for="nameInput" class="block text-sm font-medium text-gray-700 mb-1">
-\f1 \'a9\'6d\'a6\'57
-\f0  (Name):</label>\
-                <input type="text" id="nameInput" class="name-input mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="
-\f1 \'bd\'d0\'a6\'62\'a6\'b9\'bf\'e9\'a4\'4a\'b1\'7a\'aa\'ba\'a9\'6d\'a6\'57
-\f0 ">\
-            </div>\
-            <button id="updateButton" class="action-button w-full bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-opacity-75">\
-                
-\f1 \'a7\'f3\'b7\'73\'c3\'d2\'ae\'d1\'a9\'6d\'a6\'57
-\f0 \
-            </button>\
-        </div>\
-    </div>\
-\
-    <div id="certificatePreview" class="preview-area w-full max-w-6xl">\
-        <p class="preview-header text-center text-gray-600 mb-2 font-semibold no-print">
-\f1 \'c3\'d2\'ae\'d1\'b9\'77\'c4\'fd
-\f0 </p>\
-        <div class="certificate-content bg-white rounded-xl p-8 md:p-12 lg:p-16 relative overflow-hidden w-full aspect-[1.414/1] md:aspect-video flex flex-col justify-between">\
-            <svg class="absolute top-0 left-0 w-full h-full pointer-events-none" viewBox="0 0 1000 707" preserveAspectRatio="xMidYMid meet" fill="none" xmlns="http://www.w3.org/2000/svg">\
-                <rect x="10" y="10" width="980" height="687" rx="10" ry="10" stroke="#B08D57" stroke-width="6"/>\
-                <rect x="22" y="22" width="956" height="663" rx="5" ry="5" stroke="#B08D57" stroke-width="2.5"/>\
-\
-                <path d="M22,52 C32,42 42,32 52,22 H22 V52 Z" stroke="#B08D57" stroke-width="2.5" fill="#B08D57" fill-opacity="0.15"/>\
-                <path d="M52,22 V52 C42,42 32,32 22,52 H52 V22 Z" stroke="#B08D57" stroke-width="2.5" fill="#B08D57" fill-opacity="0.15"/>\
-                <circle cx="22" cy="22" r="5" fill="#B08D57"/>\
-\
-                <path d="M978,52 C968,42 958,32 948,22 H978 V52 Z" stroke="#B08D57" stroke-width="2.5" fill="#B08D57" fill-opacity="0.15"/>\
-                <path d="M948,22 V52 C958,42 968,32 978,52 H948 V22 Z" stroke="#B08D57" stroke-width="2.5" fill="#B08D57" fill-opacity="0.15"/>\
-                <circle cx="978" cy="22" r="5" fill="#B08D57"/>\
-\
-                <path d="M22,655 C32,665 42,675 52,685 H22 V655 Z" stroke="#B08D57" stroke-width="2.5" fill="#B08D57" fill-opacity="0.15"/>\
-                <path d="M52,685 V655 C42,665 32,675 22,655 H52 V685 Z" stroke="#B08D57" stroke-width="2.5" fill="#B08D57" fill-opacity="0.15"/>\
-                <circle cx="22" cy="685" r="5" fill="#B08D57"/>\
-\
-                <path d="M978,655 C968,665 958,675 948,685 H978 V655 Z" stroke="#B08D57" stroke-width="2.5" fill="#B08D57" fill-opacity="0.15"/>\
-                <path d="M948,685 V655 C958,665 968,675 978,655 H948 V685 Z" stroke="#B08D57" stroke-width="2.5" fill="#B08D57" fill-opacity="0.15"/>\
-                <circle cx="978" cy="685" r="5" fill="#B08D57"/>\
-            </svg>\
-\
-            <div class="absolute top-8 left-8 md:top-12 md:left-12 lg:top-16 lg:left-16 z-10">\
-                <svg width="80" height="110" md:width="100" md:height="140" viewBox="0 0 100 140" fill="none" xmlns="http://www.w3.org/2000/svg" class="drop-shadow-md">\
-                    <path d="M35 55 C35 48, 65 48, 65 55 L 60 75 L 40 75 Z" fill="#D9534F"/> <path d="M40 75 L15 130 L38 122 Z" fill="#D9534F"/> <path d="M60 75 L85 130 L62 122 Z" fill="#D9534F"/> <path d="M40 75 L20 125 L38 122 Z" fill="#C9433F"/> <path d="M60 75 L80 125 L62 122 Z" fill="#C9433F"/> <circle cx="50" cy="50" r="40" fill="url(#medalGoldGradient)" stroke="#B8860B" stroke-width="4"/>\
-                    <circle cx="50" cy="50" r="35" fill="none" stroke="#DAA520" stroke-width="2"/> <path d="M50 32 L54.7 45.3 H69.5 L57.4 53.7 L62.1 67 L50 58.6 L37.9 67 L42.6 53.7 L30.5 45.3 H45.3 Z" fill="#FFDF00" stroke="#B8860B" stroke-width="1.5"/>\
-                    <defs>\
-                        <linearGradient id="medalGoldGradient" x1="0%" y1="0%" x2="100%" y2="100%">\
-                            <stop offset="0%" stop-color="#FFFACD"/> <stop offset="50%" stop-color="#FFD700"/> <stop offset="100%" stop-color="#CDAD00"/> </linearGradient>\
-                    </defs>\
-                </svg>\
-            </div>\
-\
-            <div class="text-center flex-grow flex flex-col justify-center items-center z-0 pt-8 md:pt-4">\
-                <div class="mb-4 p-3 bg-blue-100 rounded-lg shadow-md inline-block">\
-                    <h1 class="font-mochiy text-4xl sm:text-5xl md:text-6xl text-yellow-600 leading-tight">Certificate</h1>\
-                    <p class="text-lg sm:text-xl md:text-2xl text-gray-600 leading-tight tracking-wider">of participation</p>\
-                </div>\
-\
-                <p class="text-md sm:text-lg md:text-xl text-gray-700 mb-1 md:mb-2 mt-4">\
-                    This certificate is proudly presented to\
-                </p>\
-                <h2 id="certificateName" class="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-extrabold text-indigo-700 mb-3 md:mb-4 break-all" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.1); font-family: 'Noto Sans TC', sans-serif;">\
-                    &lt;&lt;
-\f1 \'bd\'d0\'a9\'f3\'a4\'57\'a4\'e8\'bf\'e9\'a4\'4a\'a9\'6d\'a6\'57
-\f0 &gt;&gt;\
-                </h2>\
-                <p class="text-sm sm:text-md md:text-lg text-gray-600 px-4 font-bold">\
-                    for Participating in 
-\f2 \uc0\u55357 \u56960 
-\f0  
-\f1 \'a5\'b4\'b3\'79
-\f0 AI
-\f1 \'af\'ab\'a7\'55\'b2\'7a\'a1\'41\'b1\'71
-\f0 NotebookLM
-\f1 \'b6\'7d\'a9\'6c
-\f0  
-\f2 \uc0\u55357 \u56960 
-\f0 \
-                </p>\
-            </div>\
-\
-            <div class="text-center mt-auto z-0">\
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4 text-gray-800 text-xs sm:text-sm md:text-base mb-2 md:mb-4">\
-                    <div>\
-                        <p class="font-semibold">
-\f1 \'c1\'bf\'ae\'76
-\f0 : Gloria Wu 
-\f1 \'a7\'64\'a8\'71\'c4\'f5\'a6\'d1\'ae\'76
-\f0 </p>\
-                        <p>Google Certified Trainer</p>\
-                    </div>\
-                    <div>\
-                        <p class="font-semibold">Date: 2024/07/10</p>\
-                        <p>
-\f1 \'a5\'44\'bf\'ec\'b3\'e6\'a6\'ec\'a1\'47\'a5\'b0\'a5\'fa\'ac\'ec\'a7\'de\'a4\'6a\'be\'c7
-\f0 </p>\
-                    </div>\
-                </div>\
-            </div>\
-\
-            <button id="printButton" class="print-button no-print">
-\f1 \'a6\'43\'a6\'4c\'c3\'d2\'ae\'d1
-\f0 </button>\
-        </div>\
-    </div>\
-\
-    <script>\
-        // 
-\f1 \'a8\'fa\'b1\'6f\'ac\'db\'c3\'f6\'aa\'ba
-\f0  DOM 
-\f1 \'a4\'b8\'af\'c0
-\f0 \
-        const nameInput = document.getElementById('nameInput');\
-        const updateButton = document.getElementById('updateButton');\
-        const certificateNameElement = document.getElementById('certificateName');\
-        const printButton = document.getElementById('printButton');\
-\
-        // 
-\f1 \'a7\'f3\'b7\'73\'c3\'d2\'ae\'d1\'a9\'6d\'a6\'57\'aa\'ba\'a8\'e7\'bc\'c6
-\f0 \
-        function updateCertificateName() \{\
-            const name = nameInput.value.trim(); // 
-\f1 \'a8\'fa\'b1\'6f\'bf\'e9\'a4\'4a\'ae\'d8\'aa\'ba\'ad\'c8\'a8\'c3\'a5\'68\'b0\'a3\'c0\'59\'a7\'c0\'aa\'c5\'a5\'d5
-\f0 \
-            if (name) \{\
-                certificateNameElement.textContent = name;\
-                // 
-\f1 \'b7\'ed\'a6\'b3\'a9\'6d\'a6\'57\'ae\'c9\'a1\'41\'ba\'fb\'ab\'f9\'b2\'60\'b5\'b5\'a6\'e2
-\f0  (text-indigo-700)\
-                certificateNameElement.classList.remove('text-yellow-600');\
-                certificateNameElement.classList.remove('text-orange-600');\
-                certificateNameElement.classList.add('text-indigo-700');\
-            \} else \{\
-                certificateNameElement.textContent = '<<
-\f1 \'bd\'d0\'a9\'f3\'a4\'57\'a4\'e8\'bf\'e9\'a4\'4a\'a9\'6d\'a6\'57
-\f0 >>'; // 
-\f1 \'a6\'70\'aa\'47\'a8\'53\'a6\'b3\'bf\'e9\'a4\'4a\'a1\'41\'c5\'e3\'a5\'dc\'b4\'a3\'a5\'dc
-\f0 \
-                // 
-\f1 \'b7\'ed\'a8\'53\'a6\'b3\'a9\'6d\'a6\'57\'a1\'41\'b4\'a3\'a5\'dc\'a4\'e5\'a6\'72\'a4\'5d\'b3\'5d\'ac\'b0\'b2\'60\'b5\'b5\'a6\'e2
-\f0 \
-                certificateNameElement.classList.remove('text-yellow-600');\
-                certificateNameElement.classList.remove('text-orange-600');\
-                certificateNameElement.classList.add('text-indigo-700');\
-            \}\
-        \}\
-\
-        // 
-\f1 \'ba\'ca\'c5\'a5\'ab\'f6\'b6\'73\'c2\'49\'c0\'bb\'a8\'c6\'a5\'f3
-\f0 \
-        updateButton.addEventListener('click', updateCertificateName);\
-\
-        // 
-\f1 \'ba\'ca\'c5\'a5\'bf\'e9\'a4\'4a\'ae\'d8\'aa\'ba
-\f0  Enter 
-\f1 \'c1\'e4\'a8\'c6\'a5\'f3
-\f0 \
-        nameInput.addEventListener('keypress', function(event) \{\
-            if (event.key === 'Enter') \{\
-                updateCertificateName();\
-            \}\
-        \});\
-\
-        // 
-\f1 \'ba\'ca\'c5\'a5\'a6\'43\'a6\'4c\'ab\'f6\'b6\'73\'c2\'49\'c0\'bb\'a8\'c6\'a5\'f3
-\f0 \
-        printButton.addEventListener('click', function() \{\
-            // 
-\f1 \'bc\'c8\'ae\'c9\'ac\'b0
-\f0  body 
-\f1 \'b2\'4b\'a5\'5b\'a4\'40\'ad\'d3
-\f0  class
-\f1 \'a1\'41\'a5\'48\'ab\'4b\'a6\'62\'a6\'43\'a6\'4c\'ae\'c9\'c0\'b3\'a5\'ce\'af\'53\'a9\'77\'bc\'cb\'a6\'a1
-\f0 \
-            document.body.classList.add('printing');\
-            window.print();\
-            // 
-\f1 \'a6\'43\'a6\'4c\'b5\'b2\'a7\'f4\'a9\'ce\'a8\'fa\'ae\'f8\'ab\'e1\'b2\'be\'b0\'a3\'b8\'d3
-\f0  class\
-            // 
-\f1 \'a8\'cf\'a5\'ce
-\f0  setTimeout 
-\f1 \'bd\'54\'ab\'4f\'a6\'62\'a6\'43\'a6\'4c\'b9\'ef\'b8\'dc\'ae\'d8\'b3\'42\'b2\'7a\'a7\'b9\'b2\'a6\'ab\'e1\'b0\'f5\'a6\'e6
-\f0 \
-            setTimeout(() => \{\
-                 document.body.classList.remove('printing');\
-            \}, 500);\
-\
-        \});\
-    </script>\
-</body>\
-</html>\
-}
+            }
+            .certificate-content {
+                width: 100% !important;
+                height: 100vh !important; /* 嘗試讓其填滿列印頁面高度 */
+                max-width: none !important;
+                box-shadow: none !important;
+                border-radius: 0 !important;
+                margin: 0 auto !important; /* 水平置中 */
+            }
+        }
+    </style>
+</head>
+<body class="certificate-container-bg min-h-screen flex flex-col items-center justify-center p-4 selection:bg-yellow-300 selection:text-yellow-800">
+
+    <div class="input-section mb-8 p-6 bg-white rounded-xl shadow-lg w-full max-w-md no-print">
+        <h2 class="text-2xl font-bold text-center text-blue-700 mb-6">輸入您的姓名</h2>
+        <div class="space-y-4">
+            <div>
+                <label for="nameInput" class="block text-sm font-medium text-gray-700 mb-1">姓名 (Name):</label>
+                <input type="text" id="nameInput" class="name-input mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="請在此輸入您的姓名">
+            </div>
+            <button id="updateButton" class="action-button w-full bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-opacity-75">
+                更新證書姓名
+            </button>
+        </div>
+    </div>
+
+    <div id="certificatePreview" class="preview-area w-full max-w-6xl">
+        <p class="preview-header text-center text-gray-600 mb-2 font-semibold no-print">證書預覽</p>
+        <div class="certificate-content bg-white rounded-xl p-8 md:p-12 lg:p-16 relative overflow-hidden w-full aspect-[1.414/1] md:aspect-video flex flex-col justify-between">
+            <svg class="absolute top-0 left-0 w-full h-full pointer-events-none" viewBox="0 0 1000 707" preserveAspectRatio="xMidYMid meet" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="10" y="10" width="980" height="687" rx="10" ry="10" stroke="#B08D57" stroke-width="6"/>
+                <rect x="22" y="22" width="956" height="663" rx="5" ry="5" stroke="#B08D57" stroke-width="2.5"/>
+
+                <path d="M22,52 C32,42 42,32 52,22 H22 V52 Z" stroke="#B08D57" stroke-width="2.5" fill="#B08D57" fill-opacity="0.15"/>
+                <path d="M52,22 V52 C42,42 32,32 22,52 H52 V22 Z" stroke="#B08D57" stroke-width="2.5" fill="#B08D57" fill-opacity="0.15"/>
+                <circle cx="22" cy="22" r="5" fill="#B08D57"/>
+
+                <path d="M978,52 C968,42 958,32 948,22 H978 V52 Z" stroke="#B08D57" stroke-width="2.5" fill="#B08D57" fill-opacity="0.15"/>
+                <path d="M948,22 V52 C958,42 968,32 978,52 H948 V22 Z" stroke="#B08D57" stroke-width="2.5" fill="#B08D57" fill-opacity="0.15"/>
+                <circle cx="978" cy="22" r="5" fill="#B08D57"/>
+
+                <path d="M22,655 C32,665 42,675 52,685 H22 V655 Z" stroke="#B08D57" stroke-width="2.5" fill="#B08D57" fill-opacity="0.15"/>
+                <path d="M52,685 V655 C42,665 32,675 22,655 H52 V685 Z" stroke="#B08D57" stroke-width="2.5" fill="#B08D57" fill-opacity="0.15"/>
+                <circle cx="22" cy="685" r="5" fill="#B08D57"/>
+
+                <path d="M978,655 C968,665 958,675 948,685 H978 V655 Z" stroke="#B08D57" stroke-width="2.5" fill="#B08D57" fill-opacity="0.15"/>
+                <path d="M948,685 V655 C958,665 968,675 978,655 H948 V685 Z" stroke="#B08D57" stroke-width="2.5" fill="#B08D57" fill-opacity="0.15"/>
+                <circle cx="978" cy="685" r="5" fill="#B08D57"/>
+            </svg>
+
+            <div class="absolute top-8 left-8 md:top-12 md:left-12 lg:top-16 lg:left-16 z-10">
+                <svg width="80" height="110" md:width="100" md:height="140" viewBox="0 0 100 140" fill="none" xmlns="http://www.w3.org/2000/svg" class="drop-shadow-md">
+                    <path d="M35 55 C35 48, 65 48, 65 55 L 60 75 L 40 75 Z" fill="#D9534F"/> <path d="M40 75 L15 130 L38 122 Z" fill="#D9534F"/> <path d="M60 75 L85 130 L62 122 Z" fill="#D9534F"/> <path d="M40 75 L20 125 L38 122 Z" fill="#C9433F"/> <path d="M60 75 L80 125 L62 122 Z" fill="#C9433F"/> <circle cx="50" cy="50" r="40" fill="url(#medalGoldGradient)" stroke="#B8860B" stroke-width="4"/>
+                    <circle cx="50" cy="50" r="35" fill="none" stroke="#DAA520" stroke-width="2"/> <path d="M50 32 L54.7 45.3 H69.5 L57.4 53.7 L62.1 67 L50 58.6 L37.9 67 L42.6 53.7 L30.5 45.3 H45.3 Z" fill="#FFDF00" stroke="#B8860B" stroke-width="1.5"/>
+                    <defs>
+                        <linearGradient id="medalGoldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#FFFACD"/> <stop offset="50%" stop-color="#FFD700"/> <stop offset="100%" stop-color="#CDAD00"/> </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+
+            <div class="text-center flex-grow flex flex-col justify-center items-center z-0 pt-8 md:pt-4">
+                <div class="mb-4 p-3 bg-blue-100 rounded-lg shadow-md inline-block">
+                    <h1 class="font-mochiy text-4xl sm:text-5xl md:text-6xl text-yellow-600 leading-tight">Certificate</h1>
+                    <p class="text-lg sm:text-xl md:text-2xl text-gray-600 leading-tight tracking-wider">of participation</p>
+                </div>
+
+                <p class="text-md sm:text-lg md:text-xl text-gray-700 mb-1 md:mb-2 mt-4">
+                    This certificate is proudly presented to
+                </p>
+                <h2 id="certificateName" class="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-extrabold text-indigo-700 mb-3 md:mb-4 break-all" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.1); font-family: 'Noto Sans TC', sans-serif;">
+                    &lt;&lt;請於上方輸入姓名&gt;&gt;
+                </h2>
+                <p class="text-sm sm:text-md md:text-lg text-gray-600 px-4 font-bold">
+                    for Participating in 🚀 打造AI神助理，從NotebookLM開始 🚀
+                </p>
+            </div>
+
+            <div class="text-center mt-auto z-0">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4 text-gray-800 text-xs sm:text-sm md:text-base mb-2 md:mb-4">
+                    <div>
+                        <p class="font-semibold">講師: Gloria Wu 吳秀蘭老師</p>
+                        <p>Google Certified Trainer</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold">Date: 2024/07/10</p>
+                        <p>主辦單位：弘光科技大學</p>
+                    </div>
+                </div>
+            </div>
+
+            <button id="printButton" class="print-button no-print">列印證書</button>
+        </div>
+    </div>
+
+    <script>
+        // 取得相關的 DOM 元素
+        const nameInput = document.getElementById('nameInput');
+        const updateButton = document.getElementById('updateButton');
+        const certificateNameElement = document.getElementById('certificateName');
+        const printButton = document.getElementById('printButton');
+
+        // 更新證書姓名的函數
+        function updateCertificateName() {
+            const name = nameInput.value.trim(); // 取得輸入框的值並去除頭尾空白
+            if (name) {
+                certificateNameElement.textContent = name;
+                // 當有姓名時，維持深紫色 (text-indigo-700)
+                certificateNameElement.classList.remove('text-yellow-600');
+                certificateNameElement.classList.remove('text-orange-600');
+                certificateNameElement.classList.add('text-indigo-700');
+            } else {
+                certificateNameElement.textContent = '<<請於上方輸入姓名>>'; // 如果沒有輸入，顯示提示
+                // 當沒有姓名，提示文字也設為深紫色
+                certificateNameElement.classList.remove('text-yellow-600');
+                certificateNameElement.classList.remove('text-orange-600');
+                certificateNameElement.classList.add('text-indigo-700');
+            }
+        }
+
+        // 監聽按鈕點擊事件
+        updateButton.addEventListener('click', updateCertificateName);
+
+        // 監聽輸入框的 Enter 鍵事件
+        nameInput.addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                updateCertificateName();
+            }
+        });
+
+        // 監聽列印按鈕點擊事件
+        printButton.addEventListener('click', function() {
+            // 暫時為 body 添加一個 class，以便在列印時應用特定樣式
+            document.body.classList.add('printing');
+            window.print();
+            // 列印結束或取消後移除該 class
+            // 使用 setTimeout 確保在列印對話框處理完畢後執行
+            setTimeout(() => {
+                 document.body.classList.remove('printing');
+            }, 500);
+
+        });
+    </script>
+</body>
+</html>
